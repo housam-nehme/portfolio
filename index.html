@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Housam | CS @ CSUF</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --border: #ebebeb;
+      --accent: #111111;
+      --accent2: #0066ff;
+      --text: #111111;
+      --muted: #999999;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 250, 250, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* CONTAINER */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 0; }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 3rem;
+      color: var(--text);
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f0f0f0;
+      border-radius: 99px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+
+    .hero-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-name {
+      font-size: clamp(3.5rem, 9vw, 6rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-name span {
+      color: var(--accent2);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-dark {
+      display: inline-block;
+      background: var(--text);
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-dark:hover { opacity: 0.8; }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.7rem 1.5rem;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    /* ABOUT */
+    #about { border-bottom: 1px solid var(--border); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .about-info {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.83rem;
+    }
+
+    .info-row:last-child { border-bottom: none; }
+
+    .info-label { color: var(--muted); }
+
+    .info-value {
+      color: var(--text);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    /* PROJECTS */
+    #projects { border-bottom: 1px solid var(--border); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .project-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-number {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .project-link {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .project-link:hover { color: var(--accent2); }
+
+    .project-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .project-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 300;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 0.2rem 0.55rem;
+      background: #f4f4f4;
+      color: var(--muted);
+      border-radius: 4px;
+    }
+
+    .tag.blue {
+      background: #eff6ff;
+      color: var(--accent2);
+    }
+
+    .project-card.placeholder {
+      border-style: dashed;
+      align-items: center;
+      justify-content: center;
+      min-height: 160px;
+      opacity: 0.4;
+    }
+
+    .project-card.placeholder p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    /* EDUCATION */
+    #education { border-bottom: 1px solid var(--border); }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-item:last-child { border-bottom: none; }
+
+    .edu-school {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-degree {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+    }
+
+    .edu-courses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .edu-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* SKILLS */
+    #skills { border-bottom: 1px solid var(--border); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .skill-card h3 {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .skill-list li {
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* CONTACT */
+    #contact { text-align: center; }
+
+    .contact-big {
+      font-size: clamp(1.25rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid #dbeafe;
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+      margin-bottom: 2rem;
+    }
+
+    .contact-email:hover { border-color: var(--accent2); }
+
+    .contact-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .contact-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      transition: color 0.2s;
+    }
+
+    .contact-links a:hover { color: var(--text); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+      .hero-name { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-brand">HousamCS.</a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#education">education</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+
+      <div class="hero-tag fade-up">
+        <span class="hero-dot"></span>
+        open to internships
+      </div>
+
+      <h1 class="hero-name fade-up">
+        Housam<br/><span>CS.</span>
+      </h1>
+
+      <p class="hero-sub fade-up">
+        CS student at CSUF • Cybersecurity
+      </p>
+
+      <div class="hero-buttons fade-up">
+        <a href="#projects" class="btn-dark">see my work</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">01 — about</p>
+      <h2 class="section-title">who i am</h2>
+
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <p>
+            I'm an incoming <strong>CS student at Cal State Fullerton</strong>
+            with a concentration in <strong>cybersecurity</strong>. I care about
+            how systems work and, more importantly, how they can break.
+          </p>
+          <p>
+            I'm working toward <strong>Security+</strong> and building hands-on
+            skills through platforms like TryHackMe and OverTheWire. Outside of
+            school I enjoy gaming, modding Minecraft, and building things from
+            scratch just to see if I can.
+          </p>
+          <p>This site is a living record of my progress. Check back as it grows.</p>
+        </div>
+
+        <div class="about-info fade-up">
+          <div class="info-row">
+            <span class="info-label">status</span>
+            <span class="info-value">incoming @ CSUF</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">focus</span>
+            <span class="info-value">cybersecurity</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">learning</span>
+            <span class="info-value">Security+, ethical hacking</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">location</span>
+            <span class="info-value">Southern California</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">02 — projects</p>
+      <h2 class="section-title">things i've built</h2>
+
+      <div class="projects-grid">
+
+        <div class="project-card fade-up">
+          <div class="project-card-top">
+            <span class="project-number">001</span>
+            <a href="#" class="project-link">github ↗</a>
+          </div>
+          <h3 class="project-name">Projects soon!</h3>
+          <p class="project-desc">Description Placeholder</p>
+          <div class="project-tags">
+            <span class="tag blue">Python</span>
+            <span class="tag">Linux</span>
+            
+          </div>
+        </div>
+
+        <div class="project-card placeholder fade-up">
+          <p>coming soon</p>
+        </div>
+
+        <div class="project-card placeholder fade-up">
+          <p>coming soon</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <p class="section-label">03 — education</p>
+      <h2 class="section-title">where i've learned</h2>
+
+      <div class="fade-up">
+        <div class="edu-item">
+          <div>
+            <p class="edu-school">California State University, Fullerton</p>
+            <p class="edu-degree">B.S. Computer Science — Cybersecurity Concentration</p>
+            <div class="edu-courses">
+              <span class="tag">courses added each semester</span>
+            </div>
+          </div>
+          <span class="edu-date">2026 — 2030(expected)</span>
+        </div>
+
+        <div class="edu-item">
+          <div>
+            <p class="edu-school">International Polytechnic High School</p>
+            <p class="edu-degree">High School Diploma</p>
+            <div class="edu-courses">
+              <span class="tag">Calculus I</span>
+              <span class="tag">Discrete Math</span>
+            </div>
+          </div>
+          <span class="edu-date">2022 — 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">04 — skills</p>
+      <h2 class="section-title">what i work with</h2>
+
+      <div class="skills-grid">
+        <div class="skill-card fade-up">
+          <h3>languages</h3>
+          <ul class="skill-list">
+            <li>C++</li>
+            <li>Python</li>
+            <li>HTML / CSS</li>
+          </ul>
+        </div>
+        <div class="skill-card fade-up">
+          <h3>tools</h3>
+          <ul class="skill-list">
+            <li>Git / GitHub</li>
+            <li>VS Code</li>
+            <li>Linux</li>
+          </ul>
+        </div>
+        <div class="skill-card fade-up">
+          <h3>security</h3>
+          <ul class="skill-list">
+            <li>TryHackMe</li>
+            <li>OverTheWire</li>
+            <li>Security+ (studying)</li>
+          </ul>
+        </div>
+        <div class="skill-card fade-up">
+          <h3>learning</h3>
+          <ul class="skill-list">
+            <li>Networking</li>
+            <li>AWS Cloud</li>
+            <li>React</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">05 — contact</p>
+      <h2 class="section-title fade-up">get in touch</h2>
+      <p class="contact-big fade-up">Let's connect.</p>
+      <p class="contact-sub fade-up">Open to internships, projects, and people in the security space.</p>
+      <p>housam.nehme@gmail.com</p>
+      <div class="contact-links fade-up">
+        <a href="https://github.com/housam-nehme" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/housam-mohamad-ali-nehme-220696306/" target="_blank">linkedin</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>designed & built by housam · housamcs.dev</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  </script>
+
+</body>
+</html>

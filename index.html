@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -271,6 +271,11 @@
       font-family: var(--font-mono);
       font-size: 0.7rem;
       color: var(--muted);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
     }
 
     .project-link {
@@ -591,31 +596,48 @@
       <h2 class="section-title">things i've built</h2>
 
       <div class="projects-grid">
-<div class="project-card fade-up">
-  <div class="project-card-top">
-    <span class="project-number">001</span>
-    <div class="project-links">
-      <a href="https://worthitdegree.com" target="_blank" class="project-link">live ↗</a>
-    </div>
-  </div>
-  <h3 class="project-name">WorthIt</h3>
-  <p class="project-desc">
-    A full stack web app that tells you if a degree is actually worth it. Enter your major, target job, school, cost, and state. then get an AI-generated verdict plus a ranked list of real schools split into reach schools and solid options.
-  </p>
-  <div class="project-tags">
-    <span class="tag blue">Flask</span>
-    <span class="tag">Python</span>
-    <span class="tag">Groq/Llama</span>
-    <span class="tag">REST API</span>
-    <span class="tag">Render</span>
-            
+
+        <!-- PROJECT 001: WorthIt -->
+        <div class="project-card fade-up">
+          <div class="project-card-top">
+            <span class="project-number">001</span>
+            <div class="project-links">
+              <a href="https://worthitdegree.com" target="_blank" class="project-link">live ↗</a>
+            </div>
+          </div>
+          <h3 class="project-name">WorthIt</h3>
+          <p class="project-desc">
+            A full stack web app that tells you if a degree is actually worth it. Enter your major, target job, school, cost, and state, then get an AI-generated verdict plus a ranked list of real schools split into reach schools and solid options.
+          </p>
+          <div class="project-tags">
+            <span class="tag blue">Flask</span>
+            <span class="tag">Python</span>
+            <span class="tag">Groq/Llama</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Render</span>
           </div>
         </div>
 
-        <div class="project-card placeholder fade-up">
-          <p>coming soon</p>
+        <!-- PROJECT 002: CrazyCobbbleSMP -->
+        <div class="project-card fade-up">
+          <div class="project-card-top">
+            <span class="project-number">002</span>
+            <div class="project-links">
+              <a href="https://crazycobblesmp.com" target="_blank" class="project-link">live ↗</a>
+            </div>
+          </div>
+          <h3 class="project-name">CrazyCobbbleSMP</h3>
+          <p class="project-desc">
+            Landing page for a Cobblemon Minecraft SMP. Covers the modpack, how to join the Discord, and download instructions for getting started.
+          </p>
+          <div class="project-tags">
+            <span class="tag blue">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
         </div>
 
+        <!-- PLACEHOLDER -->
         <div class="project-card placeholder fade-up">
           <p>coming soon</p>
         </div>
@@ -639,7 +661,7 @@
               <span class="tag">courses added each semester</span>
             </div>
           </div>
-          <span class="edu-date">2026 — 2030(expected)</span>
+          <span class="edu-date">2026 — 2030 (expected)</span>
         </div>
 
         <div class="edu-item">
@@ -738,3 +760,4 @@
 
 </body>
 </html>
+EOF
